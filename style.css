@@ -1,0 +1,61 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+input {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.board {
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin-left: 50px;
+    margin-top: 50px;
+    border: 2px solid black;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.dark {
+    background-color: #121212;
+}
+
+.light {
+    background-color: white;
+}
+
+.white {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.black {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.piece {
+    position: absolute;
+}
+
+/* .dark .piece {
+    color: white;
+} */
