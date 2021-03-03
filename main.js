@@ -1,16 +1,9 @@
-const pawn = 'p'
-const bishop = 'b'
-const knight = 'n'
-const rook = 'r'
-const queen = 'q'
-const king = 'k'
-
-const bPawn = 'o'
-const bBishop = 'v'
-const bKnight = 'm'
-const bRook = 't'
-const bQueen = 'w'
-const bKing = 'l'
+const pawn = 'o'
+const bishop = 'v'
+const knight = 'm'
+const rook = 't'
+const queen = 'w'
+const king = 'l'
 
 var turn = 0; // even = white, odd = black
 
@@ -150,7 +143,7 @@ function checkForChecks(cur, next){
         
     for (i = 1; i <= 8; i++){
         for (j = 1; j <= 8; j++){
-            if ((document.getElementById(numberAsLetter(j) + String(i)).innerText == king || document.getElementById(numberAsLetter(j) + String(i)).innerText == king) &&
+            if (document.getElementById(numberAsLetter(j) + String(i)).innerText == king &&
                 document.getElementById(numberAsLetter(j) + String(i)).innerHTML.search(color) > 0){
                     var tempX = j;
                     var tempY = i;
@@ -922,7 +915,7 @@ if (nextLetterAsNumber == curLetterAsNumber + 2)
     document.getElementById('g8').innerText == ''){
         black_castle_right = 0;
         black_castle_left = 0;
-        document.getElementById('f8').innerHTML = document.getElementById('h1').innerHTML;
+        document.getElementById('f8').innerHTML = document.getElementById('h8').innerHTML;
         document.getElementById('h8').innerHTML = '';
         return 0;
             
@@ -1342,6 +1335,18 @@ try {
 
 
 function checkForCheckmates(cur, next, tempX, tempY){
+    curElem = document.getElementById(cur);
+    nextElem = document.getElementById(next);
+
+    let curNumber = Number(Array.from(cur)[1]);
+    let curLetter = Array.from(cur)[0];
+    let curLetterAsNumber = letterAsNumber(curLetter);
+
+    let nextNumber = Number(Array.from(next)[1]);
+    let nextLetter = Array.from(next)[0];
+    let nextLetterAsNumber = letterAsNumber(nextLetter);
+
+
     let color;
     let opoColor;
     turn % 2 != 0 ? color = 'white' : color = 'black';
@@ -1429,7 +1434,322 @@ function checkForCheckmates(cur, next, tempX, tempY){
             return 0;
         } 
     }
+
+
+
+// verticals
+    if (curNumber == 1){
+        for (i = curNumber + 1; i <= 8; i++){
+            if (document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == rook ||
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    } else if (curNumber == 8){
+        for (i = curNumber - 1; i >= 1; i--){
+            if (document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == rook ||
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    } else {
+        // above
+        for (i = curNumber + 1; i <= 8; i++){
+            if (document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == rook ||
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+        // below
+        for (i = curNumber - 1; i >= 1; i--){
+            if (document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == rook ||
+            document.getElementById(numberAsLetter(curLetterAsNumber) + String(i)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    }
+
+    // horizontals
+    if (curLetterAsNumber == 1){
+        for (i = curLetterAsNumber + 1; i <= 8; i++){
+            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    } else if (curLetterAsNumber == 8){
+        for (i = tempX - 1; i >= 1; i--){
+            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    } else {
+        // above
+        for (i = curLetterAsNumber + 1; i <= 8; i++){
+            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+        // below
+        for (i = curLetterAsNumber - 1; i >= 1; i--){
+            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
+                break;
+            }
+            else if (
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
+            document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
+            ){
+                turn -= 1
+                return 0;
+            }
+        }
+    }
+
+
+    // diagonals
+    var stop1 = 0;
+    var stop2 = 0;
+    var stop3 = 0;
+    var stop4 = 0;
+    for (i = 1; i <= 8; i++){
+        // up and right
+        if (curLetterAsNumber + i <= 8 && curNumber + i <= 8){
+            if (stop1){}
+            else if (
+                document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber + i)).innerHTML.search(color) > 0
+            ){
+                stop1 = 1;
+            }
+            else {
+                if (document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber + i)).innerText == queen ||
+                document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber + i)).innerText == bishop){
+                    turn -= 1
+                    return 0;
+                }
+            }
+    }
+
+        // down and left
+        if (tempX - i >= 1 && tempY - i >= 1){
+            if (stop2){}
+            else if (
+                document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber - i)).innerHTML.search(color) > 0
+            ){
+                stop2 = 1;
+            }
+            else {
+                if (document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber - i)).innerText == queen ||
+                document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber - i)).innerText == bishop){
+                    turn -= 1
+                    return 0;
+                }
+            }
+    }
+
+        // up and left
+        if (tempX - i >= 1 && tempY + i <= 8){
+            if (stop3){}
+            else if (
+                document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber + i)).innerHTML.search(color) > 0
+            ){
+                stop3 = 1;
+            }
+            else {
+                if (document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber + i)).innerText == queen ||
+                document.getElementById(numberAsLetter(curLetterAsNumber - i) + String(curNumber + i)).innerText == bishop){
+                    turn -= 1
+                    return 0;
+                }
+            }
+    }
+
+        // down and right
+        if (tempX + i <= 8 && tempY - i >= 1){
+            if (stop4){}
+            else if (
+                document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber - i)).innerHTML.search(color) > 0
+            ){
+                stop4 = 1;
+            }
+            else {
+                if (document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber - i)).innerText == queen ||
+                document.getElementById(numberAsLetter(curLetterAsNumber + i) + String(curNumber - i)).innerText == bishop){
+                    turn -= 1
+                    return 0;
+                }
+            }
+    }
+
+    }
+
+
+
+    // knights
+    try {
+        // right up
+        if (
+        document.getElementById(numberAsLetter(curLetterAsNumber + 2) + String(curNumber + 1)).innerText == knight && document.getElementById(numberAsLetter(curLetterAsNumber + 2) + String(curNumber + 1)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch(e) {
+
+    }
+    try {
+        // right down
+        if (
+        document.getElementById(numberAsLetter(curLetterAsNumber + 2) + String(curNumber - 1)).innerText == knight && document.getElementById(numberAsLetter(curLetterAsNumber + 2) + String(curNumber - 1)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch(e) {
+
+    }
+    try {
+        // left up
+        if (
+        document.getElementById(numberAsLetter(curLetterAsNumber - 2) + String(curNumber + 1)).innerText == knight && document.getElementById(numberAsLetter(curLetterAsNumber - 2) + String(curNumber + 1)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+    try {
+        // left down
+        if (
+        document.getElementById(numberAsLetter(curLetterAsNumber - 2) + String(curNumber - 1)).innerText == knight && document.getElementById(numberAsLetter(curLetterAsNumber - 2) + String(curNumber - 1)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+    try {
+        // up right
+        if (
+        document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+    try {
+        // up left
+        if (
+        document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+    try {
+        // down right
+        if (
+        document.getElementById(numberAsLetter(curLetterAsNumber + 1) + String(curNumber - 2)).innerText == knight && document.getElementById(numberAsLetter(curLetterAsNumber + 1) + String(curNumber - 2)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+    try {
+        // down left
+        if (
+        document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
+        ){
+            turn -= 1
+            return 0;
+        }
+    } catch (e) {
+
+    }
+
+
+
+    // pawns
+    var pawnDirection;
+    color == 'white' ? pawnDirection = 1 : pawnDirection = -1;
+    try {
+        if  (
+            document.getElementById(numberAsLetter(curLetterAsNumber + 1) + String(curNumber + pawnDirection)).innerText == pawn &&
+            document.getElementById(numberAsLetter(curLetterAsNumber + 1) + String(curNumber + pawnDirection)).innerHTML.search(opoColor) > 0
+            ){
+                turn -= 1
+                return 0;
+            }
+    } catch (e){
+
+    }
+    try {
+        if  (
+            document.getElementById(numberAsLetter(curLetterAsNumber - 1) + String(curNumber + pawnDirection)).innerText == pawn &&
+            document.getElementById(numberAsLetter(curLetterAsNumber - 1) + String(curNumber + pawnDirection)).innerHTML.search(opoColor) > 0
+            ){
+                turn -= 1
+                return 0;
+        }
+    } catch (e) {
+
+    }
     
+
+    // blockers
+
+
     alertError = 1
     showError('checkmate, ' + opoColor + ' wins');
     return 1;
@@ -1494,6 +1814,93 @@ function numberAsLetter(number){
 
 
 
+function resetGame(){
+    var turn = 0; // even = white, odd = black
+
+    var white_castle_right = 1 // 1 = true, 0 = false
+    var white_castle_left = 1 
+    var black_castle_right = 1 
+    var black_castle_left = 1
+
+    var alertError = 1
+
+    document.querySelector('.board').innerHTML = `
+    <div id="a8" class="square light"><div class="piece black">t</div></div>
+    <div id="b8" class="square dark"><div class="piece black">m</div></div>
+    <div id="c8" class="square light"><div class="piece black">v</div></div>
+    <div id="d8" class="square dark"><div class="piece black">w</div></div>
+    <div id="e8" class="square light"><div class="piece black">l</div></div>
+    <div id="f8" class="square dark"><div class="piece black">v</div></div>
+    <div id="g8" class="square light"><div class="piece black">m</div></div>
+    <div id="h8" class="square dark"><div class="piece black">t</div></div>
+
+    <div id="a7" class="square dark"><div class="piece black">o</div></div>
+    <div id="b7" class="square light"><div class="piece black">o</div></div>
+    <div id="c7" class="square dark"><div class="piece black">o</div></div>
+    <div id="d7" class="square light"><div class="piece black">o</div></div>
+    <div id="e7" class="square dark"><div class="piece black">o</div></div>
+    <div id="f7" class="square light"><div class="piece black">o</div></div>
+    <div id="g7" class="square dark"><div class="piece black">o</div></div>
+    <div id="h7" class="square light"><div class="piece black">o</div></div>
+    
+    <div id="a6" class="square light"><div class="piece"></div></div>
+    <div id="b6" class="square dark"><div class="piece"></div></div>
+    <div id="c6" class="square light"><div class="piece"></div></div>
+    <div id="d6" class="square dark"><div class="piece"></div></div>
+    <div id="e6" class="square light"><div class="piece"></div></div>
+    <div id="f6" class="square dark"><div class="piece"></div></div>
+    <div id="g6" class="square light"><div class="piece"></div></div>
+    <div id="h6" class="square dark"><div class="piece"></div></div>
+
+    <div id="a5" class="square dark"><div class="piece"></div></div>
+    <div id="b5" class="square light"><div class="piece"></div></div>
+    <div id="c5" class="square dark"><div class="piece"></div></div>
+    <div id="d5" class="square light"><div class="piece"></div></div>
+    <div id="e5" class="square dark"><div class="piece"></div></div>
+    <div id="f5" class="square light"><div class="piece"></div></div>
+    <div id="g5" class="square dark"><div class="piece"></div></div>
+    <div id="h5" class="square light"><div class="piece"></div></div>
+    
+    <div id="a4" class="square light"><div class="piece"></div></div>
+    <div id="b4" class="square dark"><div class="piece"></div></div>
+    <div id="c4" class="square light"><div class="piece"></div></div>
+    <div id="d4" class="square dark"><div class="piece"></div></div>
+    <div id="e4" class="square light"><div class="piece"></div></div>
+    <div id="f4" class="square dark"><div class="piece"></div></div>
+    <div id="g4" class="square light"><div class="piece"></div></div>
+    <div id="h4" class="square dark"><div class="piece"></div></div>
+    
+    <div id="a3" class="square dark"><div class="piece"></div></div>
+    <div id="b3" class="square light"><div class="piece"></div></div>
+    <div id="c3" class="square dark"><div class="piece"></div></div>
+    <div id="d3" class="square light"><div class="piece"></div></div>
+    <div id="e3" class="square dark"><div class="piece"></div></div>
+    <div id="f3" class="square light"><div class="piece"></div></div>
+    <div id="g3" class="square dark"><div class="piece"></div></div>
+    <div id="h3" class="square light"><div class="piece"></div></div>
+    
+    <div id="a2" class="square light"><div class="piece white">o</div></div>
+    <div id="b2" class="square dark"><div class="piece white">o</div></div>
+    <div id="c2" class="square light"><div class="piece white">o</div></div>
+    <div id="d2" class="square dark"><div class="piece white">o</div></div>
+    <div id="e2" class="square light"><div class="piece white">o</div></div>
+    <div id="f2" class="square dark"><div class="piece white">o</div></div>
+    <div id="g2" class="square light"><div class="piece white">o</div></div>
+    <div id="h2" class="square dark"><div class="piece white">o</div></div>
+
+    <div id="a1" class="square dark"><div class="piece white">t</div></div>
+    <div id="b1" class="square light"><div class="piece white">m</div></div>
+    <div id="c1" class="square dark"><div class="piece white">v</div></div>
+    <div id="d1" class="square light"><div class="piece white">w</div></div>
+    <div id="e1" class="square dark"><div class="piece white">l</div></div>
+    <div id="f1" class="square light"><div class="piece white">v</div></div>
+    <div id="g1" class="square dark"><div class="piece white">m</div></div>
+    <div id="h1" class="square light"><div class="piece white">t</div></div>
+    `
+}
+
+
+
 function handleCommands(){
     const command = document.getElementById('commands');
     let forMove = command.value.split(' ');
@@ -1518,24 +1925,23 @@ document.getElementById('commands').addEventListener('keyup', function (event) {
     }
 })
 
-// move('e2', 'e4');
-// move('e7', 'e5');
-// move('f1', 'c4');
-// move('f8', 'c5');
-// move('h2', 'h4');
-// move('a7', 'a5');
-// move('h1', 'h3');
-// move('a8', 'a6');
-// move('h4', 'h5');
-// move('a5', 'a4');
-// move('h5', 'h6');
-// move('a4', 'a3');
-// move('h3', 'h5');
-// move('a3', 'b2');
-
-// move('e2', 'e4', 0);
-// move('e7', 'e5', 0);
-// move('f1', 'c4', 0);
-// move('f8', 'c5', 0);
-// move('d1', 'f3', 0);
-// move('a7', 'a6', 0);
+move('e2', 'e4', 0);
+move('e7', 'e5', 0);
+move('f1', 'c4', 0);
+move('f8', 'c5', 0);
+move('d1', 'f3', 0);
+move('a7', 'a6', 0);
+move('b1', 'c3', 0);
+move('b8', 'c6', 0);
+move('a2', 'a3', 0);
+move('g8', 'h6', 0);
+move('b2', 'b4', 0);
+move('f7', 'f6', 0);
+move('b4', 'b5', 0);
+move('a8', 'b8', 0);
+move('a3', 'a4', 0);
+move('b8', 'a8', 0);
+move('c1', 'a3', 0);
+move('a8', 'b8', 0);
+move('a3', 'c5', 0);
+move('b8', 'a8', 0);

@@ -64,28 +64,42 @@
                 <div id="g3" class="square dark"><div class="piece"></div></div>
                 <div id="h3" class="square light"><div class="piece"></div></div>
                 
-                <div id="a2" class="square light"><div class="piece white">p</div></div>
-                <div id="b2" class="square dark"><div class="piece white">p</div></div>
-                <div id="c2" class="square light"><div class="piece white">p</div></div>
-                <div id="d2" class="square dark"><div class="piece white">p</div></div>
-                <div id="e2" class="square light"><div class="piece white">p</div></div>
-                <div id="f2" class="square dark"><div class="piece white">p</div></div>
-                <div id="g2" class="square light"><div class="piece white">p</div></div>
-                <div id="h2" class="square dark"><div class="piece white">p</div></div>
+                <div id="a2" class="square light"><div class="piece white">o</div></div>
+                <div id="b2" class="square dark"><div class="piece white">o</div></div>
+                <div id="c2" class="square light"><div class="piece white">o</div></div>
+                <div id="d2" class="square dark"><div class="piece white">o</div></div>
+                <div id="e2" class="square light"><div class="piece white">o</div></div>
+                <div id="f2" class="square dark"><div class="piece white">o</div></div>
+                <div id="g2" class="square light"><div class="piece white">o</div></div>
+                <div id="h2" class="square dark"><div class="piece white">o</div></div>
         
-                <div id="a1" class="square dark"><div class="piece white">r</div></div>
-                <div id="b1" class="square light"><div class="piece white">n</div></div>
-                <div id="c1" class="square dark"><div class="piece white">b</div></div>
-                <div id="d1" class="square light"><div class="piece white">q</div></div>
-                <div id="e1" class="square dark"><div class="piece white">k</div></div>
-                <div id="f1" class="square light"><div class="piece white">b</div></div>
-                <div id="g1" class="square dark"><div class="piece white">n</div></div>
-                <div id="h1" class="square light"><div class="piece white">r</div></div>
+                <div id="a1" class="square dark"><div class="piece white">t</div></div>
+                <div id="b1" class="square light"><div class="piece white">m</div></div>
+                <div id="c1" class="square dark"><div class="piece white">v</div></div>
+                <div id="d1" class="square light"><div class="piece white">w</div></div>
+                <div id="e1" class="square dark"><div class="piece white">l</div></div>
+                <div id="f1" class="square light"><div class="piece white">v</div></div>
+                <div id="g1" class="square dark"><div class="piece white">m</div></div>
+                <div id="h1" class="square light"><div class="piece white">t</div></div>
         </div>
 
         <input id="commands" type="text">
         <button id="subBtn" onclick="handleCommands()">Enter</button>
+        <button id="resetBtn" onclick="resetGame()">reset</button>
+        <p id="flip">flip</p>
 
 </body>
 <script src="./main.js"></script>
+<script>
+        var flip = 0
+        document.getElementById('flip').addEventListener('click', () => {
+                if (flip) {
+                        document.querySelector('.board').style.transform = '';
+                        flip = 0;
+                } else {
+                        document.querySelector('.board').style.transform = 'rotate(180deg)';
+                        flip = 1;
+                }
+        })
+</script>
 </html>

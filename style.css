@@ -9,7 +9,8 @@
 }
 
 body {
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    background-color: #918f89;
 }
 
 input {
@@ -25,6 +26,7 @@ input {
     margin-left: 50px;
     margin-top: 50px;
     border: 2px solid black;
+    transform-origin: center;
 }
 
 .square {
@@ -36,25 +38,32 @@ input {
 }
 
 .dark {
-    background-color: #817a7a;
+    background-color: #443f3f;
 }
 
 .light {
-    background-color: white;
+    background-color: #e6dbbd;
 }
 
 .white {
     /* background-color: white;
     color: black; */
+    color: white;
     padding: 0px;
     border-radius: 5px;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .black {
     /* background-color: black;
     color: white; */
+    color: black;
     padding: 0px;
     border-radius: 5px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
 }
 
 .piece {
