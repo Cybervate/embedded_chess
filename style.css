@@ -1,12 +1,11 @@
-/* @font-face {
+@font-face {
     font-family: Chess; 
-    src: url('Chess_Alpha.ttf'), url('Chess_Alpha.ttf');
-} */
+    src: url(fonts/Chess7-DaE1.ttf);
+}
 
 * {
     padding: 0px;
     margin: 0px;
-    /* font-family: Chess; */
 }
 
 body {
@@ -37,7 +36,7 @@ input {
 }
 
 .dark {
-    background-color: #121212;
+    background-color: #817a7a;
 }
 
 .light {
@@ -45,21 +44,23 @@ input {
 }
 
 .white {
-    background-color: white;
-    color: black;
-    padding: 5px;
+    /* background-color: white;
+    color: black; */
+    padding: 0px;
     border-radius: 5px;
 }
 
 .black {
-    background-color: black;
-    color: white;
-    padding: 5px;
+    /* background-color: black;
+    color: white; */
+    padding: 0px;
     border-radius: 5px;
 }
 
 .piece {
     position: absolute;
+    font-family: Chess;
+    font-size: 60px;
 }
 
 /* .dark .piece {

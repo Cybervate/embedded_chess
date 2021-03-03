@@ -1,9 +1,16 @@
 const pawn = 'p'
-const bishop = 'B'
-const knight = 'N'
-const rook = 'R'
-const queen = 'Q'
-const king = 'K'
+const bishop = 'b'
+const knight = 'n'
+const rook = 'r'
+const queen = 'q'
+const king = 'k'
+
+const bPawn = 'o'
+const bBishop = 'v'
+const bKnight = 'm'
+const bRook = 't'
+const bQueen = 'w'
+const bKing = 'l'
 
 var turn = 0; // even = white, odd = black
 
@@ -63,11 +70,11 @@ function move(cur, next, test){
 
     if (test == 0) {
         nextElem.innerHTML = curElem.innerHTML;
-        curElem.innerHTML = '';
+        curElem.innerHTML = ''
         checkForChecksForCheckmate(cur, next);
+        turn += 1
     }    
 
-    test == 0 ? turn += 1 : turn = turn;
     console.log(turn)
     return 1;
 }
@@ -143,7 +150,7 @@ function checkForChecks(cur, next){
         
     for (i = 1; i <= 8; i++){
         for (j = 1; j <= 8; j++){
-            if (document.getElementById(numberAsLetter(j) + String(i)).innerText == king &&
+            if ((document.getElementById(numberAsLetter(j) + String(i)).innerText == king || document.getElementById(numberAsLetter(j) + String(i)).innerText == king) &&
                 document.getElementById(numberAsLetter(j) + String(i)).innerHTML.search(color) > 0){
                     var tempX = j;
                     var tempY = i;
@@ -1526,9 +1533,9 @@ document.getElementById('commands').addEventListener('keyup', function (event) {
 // move('h3', 'h5');
 // move('a3', 'b2');
 
-move('e2', 'e4', 0);
-move('e7', 'e5', 0);
-move('f1', 'c4', 0);
-move('f8', 'c5', 0);
-move('d1', 'f3', 0);
-move('a7', 'a6', 0);
+// move('e2', 'e4', 0);
+// move('e7', 'e5', 0);
+// move('f1', 'c4', 0);
+// move('f8', 'c5', 0);
+// move('d1', 'f3', 0);
+// move('a7', 'a6', 0);
