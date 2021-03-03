@@ -13,7 +13,6 @@ var black_castle_right = 1
 var black_castle_left = 1 
 
 
-
 function showError(message){
     alert(message)
 }
@@ -21,7 +20,7 @@ function showError(message){
 
 
 // called every move
-function move(cur, next){
+function move(cur, next, test){
     curElem = document.getElementById(cur);
     nextElem = document.getElementById(next);
 
@@ -56,12 +55,21 @@ function move(cur, next){
         if(checkForKings(cur, next)) {return 0};
     }
 
-    if (checkForChecksForCheckmate(cur, next)) {return 0};
+    if (test == 0) {
+        nextElem.innerHTML = curElem.innerHTML;
+        curElem.innerHTML = '';
+    }
 
-    nextElem.innerHTML = curElem.innerHTML;
-    curElem.innerHTML = '';
+    // if (checkForChecksForCheckmate(cur, next)) {};
+    if (test == 0){
+        checkForChecksForCheckmate(cur, next);
+    } else {
+        // checkForChecksForCheckmate(cur, next, 0);
+    }
+    
 
-    turn += 1
+    test == 0 ? turn += 1 : turn = turn;
+    return 1;
 }
 
 
@@ -943,19 +951,19 @@ else if (nextLetterAsNumber == curLetterAsNumber -2)
 
 
 function checkForChecksForCheckmate(cur, next){
-    curElem = document.getElementById(cur);
-    nextElem = document.getElementById(next);
+    // curElem = document.getElementById(cur);
+    // nextElem = document.getElementById(next);
 
     // temporarily do the move to analyze position after move
-    let curTempElem = curElem.innerHTML;
-    let nextTempElem = nextElem.innerHTML;
+    // let curTempElem = curElem.innerHTML;
+    // let nextTempElem = nextElem.innerHTML;
 
-    nextElem.innerHTML = curElem.innerHTML;
-    curElem.innerHTML = '';
+    // nextElem.innerHTML = curElem.innerHTML;
+    // curElem.innerHTML = '';
 
     let color;
     let opoColor;
-    turn % 2 != 0 ? color = 'white' : color = 'black';
+    turn % 2 == 0 ? color = 'white' : color = 'black';
     color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
         
@@ -981,9 +989,9 @@ if (tempY == 1){
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -996,9 +1004,9 @@ if (tempY == 1){
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1012,9 +1020,9 @@ if (tempY == 1){
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1027,9 +1035,9 @@ if (tempY == 1){
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
         document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1045,9 +1053,9 @@ if (tempX == 1){
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1060,9 +1068,9 @@ if (tempX == 1){
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1076,9 +1084,9 @@ if (tempX == 1){
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1091,9 +1099,9 @@ if (tempX == 1){
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
         document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
         ){
-            checkForCheckmates('cannot put yourself in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
     }
@@ -1105,9 +1113,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch(e) {
@@ -1118,9 +1126,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch(e) {
@@ -1131,9 +1139,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1144,9 +1152,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1157,9 +1165,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1170,9 +1178,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1183,9 +1191,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1196,9 +1204,9 @@ try {
     if (
     document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
     ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1222,9 +1230,9 @@ for (i = 1; i <= 8; i++){
         else {
             if (document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == queen ||
             document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == bishop){
-                    checkForCheckmates('You will be in check');
-                    nextElem.innerHTML = nextTempElem;
-                    curElem.innerHTML = curTempElem;
+                    checkForCheckmates(cur, next, tempX, tempY);
+                    // nextElem.innerHTML = nextTempElem;
+                    // curElem.innerHTML = curTempElem;
                     return 1;
             }
         }
@@ -1241,9 +1249,9 @@ for (i = 1; i <= 8; i++){
         else {
             if (document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == queen ||
             document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == bishop){
-                    checkForCheckmates('You will be in check');
-                    nextElem.innerHTML = nextTempElem;
-                    curElem.innerHTML = curTempElem;
+                    checkForCheckmates(cur, next, tempX, tempY);
+                    // nextElem.innerHTML = nextTempElem;
+                    // curElem.innerHTML = curTempElem;
                     return 1;
             }
         }
@@ -1260,9 +1268,9 @@ for (i = 1; i <= 8; i++){
         else {
             if (document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == queen ||
             document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == bishop){
-                    checkForCheckmates('You will be in check');
-                    nextElem.innerHTML = nextTempElem;
-                    curElem.innerHTML = curTempElem;
+                    checkForCheckmates(cur, next, tempX, tempY);
+                    // nextElem.innerHTML = nextTempElem;
+                    // curElem.innerHTML = curTempElem;
                     return 1;
             }
         }
@@ -1279,9 +1287,9 @@ for (i = 1; i <= 8; i++){
         else {
             if (document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == queen ||
             document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == bishop){
-                    checkForCheckmates('You will be in check');
-                    nextElem.innerHTML = nextTempElem;
-                    curElem.innerHTML = curTempElem;
+                    checkForCheckmates(cur, next, tempX, tempY);
+                    // nextElem.innerHTML = nextTempElem;
+                    // curElem.innerHTML = curTempElem;
                     return 1;
             }
         }
@@ -1297,9 +1305,9 @@ try {
         document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerText == pawn &&
         document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
         ){
-            checkForCheckmates('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
+            checkForCheckmates(cur, next, tempX, tempY);
+            // nextElem.innerHTML = nextTempElem;
+            // curElem.innerHTML = curTempElem;
             return 1;
         }
 } catch (e){
@@ -1310,9 +1318,9 @@ try {
         document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerText == pawn &&
         document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
         ){
-        checkForCheckmates('You will be in check');
-        nextElem.innerHTML = nextTempElem;
-        curElem.innerHTML = curTempElem;
+        checkForCheckmates(cur, next, tempX, tempY);
+        // nextElem.innerHTML = nextTempElem;
+        // curElem.innerHTML = curTempElem;
         return 1;
     }
 } catch (e) {
@@ -1320,14 +1328,64 @@ try {
 }
 
 // untemp
-nextElem.innerHTML = nextTempElem;
-curElem.innerHTML = curTempElem;
+// nextElem.innerHTML = nextTempElem;
+// curElem.innerHTML = curTempElem;
 }
 
 
 
-function checkForCheckmates(fake){
-    
+function checkForCheckmates(cur, next, tempX, tempY){
+
+
+    let color;
+    let opoColor;
+    turn % 2 != 0 ? color = 'white' : color = 'black';
+    color == 'white' ? opoColor = 'black' : opoColor = 'white';
+
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY), 1)){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY)), 1){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY + 1)), 1){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY - 1)), 1){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY + 1)), 1 ){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY - 1)), 1){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY + 1))){
+            return 0;
+        } 
+    } catch (e) {}
+    try {
+        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY - 1)), 1){
+            return 0;
+        } 
+    } catch (e) {}
+
+
+    showError('checkmate, ' + opoColor + ' wins');
+    return 1;
 }
 
 
@@ -1389,13 +1447,11 @@ function numberAsLetter(number){
 
 
 
-
-
 function handleCommands(){
     const command = document.getElementById('commands');
     let forMove = command.value.split(' ');
 
-    move(forMove[0], forMove[1]);
+    move(forMove[0], forMove[1], 0, 1);
     command.value = '';
 }
 
@@ -1430,9 +1486,9 @@ document.getElementById('commands').addEventListener('keyup', function (event) {
 // move('h3', 'h5');
 // move('a3', 'b2');
 
-move('e2', 'e4');
-move('e7', 'e5');
-move('f1', 'c4');
-move('f8', 'c5');
-move('d1', 'f3');
-move('a7', 'a6');
+move('e2', 'e4', 0);
+move('e7', 'e5', 0);
+move('f1', 'c4', 0);
+move('f8', 'c5', 0);
+move('d1', 'f3', 0);
+move('a7', 'a6', 0);
