@@ -1,11 +1,12 @@
-@font-face {
-    font-family: Chess; src: url('Chess_Alpha.ttf');
-}
+/* @font-face {
+    font-family: Chess; 
+    src: url('Chess_Alpha.ttf'), url('Chess_Alpha.ttf');
+} */
 
 * {
     padding: 0px;
     margin: 0px;
-    font-family: Chess;
+    /* font-family: Chess; */
 }
 
 body {

@@ -10,11 +10,17 @@ var turn = 0; // even = white, odd = black
 var white_castle_right = 1 // 1 = true, 0 = false
 var white_castle_left = 1 
 var black_castle_right = 1 
-var black_castle_left = 1 
+var black_castle_left = 1
+
+var alertError = 1
 
 
 function showError(message){
-    alert(message)
+    if (alertError){
+        alert(message)
+    } else {
+        console.log(message)
+    }
 }
 
 
@@ -58,17 +64,11 @@ function move(cur, next, test){
     if (test == 0) {
         nextElem.innerHTML = curElem.innerHTML;
         curElem.innerHTML = '';
-    }
-
-    // if (checkForChecksForCheckmate(cur, next)) {};
-    if (test == 0){
         checkForChecksForCheckmate(cur, next);
-    } else {
-        // checkForChecksForCheckmate(cur, next, 0);
-    }
-    
+    }    
 
     test == 0 ? turn += 1 : turn = turn;
+    console.log(turn)
     return 1;
 }
 
@@ -963,7 +963,7 @@ function checkForChecksForCheckmate(cur, next){
 
     let color;
     let opoColor;
-    turn % 2 == 0 ? color = 'white' : color = 'black';
+    turn % 2 != 0 ? color = 'white' : color = 'black';
     color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
         
@@ -1335,55 +1335,95 @@ try {
 
 
 function checkForCheckmates(cur, next, tempX, tempY){
-
-
     let color;
     let opoColor;
     turn % 2 != 0 ? color = 'white' : color = 'black';
     color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY), 1)){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY)), 1){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY + 1)), 1){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY - 1)), 1){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY + 1)), 1 ){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY - 1)), 1){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY + 1))){
-            return 0;
-        } 
-    } catch (e) {}
-    try {
-        if (move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY - 1)), 1){
-            return 0;
-        } 
-    } catch (e) {}
+    turn += 1
+    alertError = 0
 
+    if (tempX + 1 <= 8){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
 
+    if (tempX - 1 >= 1){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX - 1) + String(tempY), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempY + 1 <= 8){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY + 1), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempY - 1 >= 1){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX) + String(tempY - 1), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempX + 1 <= 8 && tempY + 1 <= 8){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY + 1), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempX + 1 <= 8 && tempY - 1 >= 1){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY - 1), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempX - 1 >= 1 && tempY + 1 >= 8){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+
+    if (tempX - 1 >= 1 && tempY - 1 >= 1){
+        if (
+        move((numberAsLetter(tempX) + String(tempY)), numberAsLetter(tempX + 1) + String(tempY), 1)
+            )
+        {
+            turn -= 1
+            return 0;
+        } 
+    }
+    
+    alertError = 1
     showError('checkmate, ' + opoColor + ' wins');
     return 1;
 }
