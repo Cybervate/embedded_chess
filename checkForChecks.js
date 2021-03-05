@@ -326,88 +326,93 @@ function checkForChecks(cur, next){
     }
 
     // diagonals
-    var stop1 = 0;
-    var stop2 = 0;
-    var stop3 = 0;
-    var stop4 = 0;
-    for (i = 1; i <= 8; i++){
-        // up and right
-        if (tempX + i <= 8 && tempY + i <= 8){
-            if (stop1){}
-            else if (
-                document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerHTML.search(color) > 0
-            ){
-                stop1 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == queen ||
-                document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == bishop){
-                        showError('You will be in check');
-                        nextElem.innerHTML = nextTempElem;
-                        curElem.innerHTML = curTempElem;
-                        return 1;
-                }
-            }
+    if (testDiagonals(tempX, tempY, color)) {
+        nextElem.innerHTML = nextTempElem;
+        curElem.innerHTML = curTempElem;
+        return 1;
     }
+    // var stop1 = 0;
+    // var stop2 = 0;
+    // var stop3 = 0;
+    // var stop4 = 0;
+    // for (i = 1; i <= 8; i++){
+    //     // up and right
+    //     if (tempX + i <= 8 && tempY + i <= 8){
+    //         if (stop1){}
+    //         else if (
+    //             document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerHTML.search(color) > 0
+    //         ){
+    //             stop1 = 1;
+    //         }
+    //         else {
+    //             if (document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == queen ||
+    //             document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == bishop){
+    //                     showError('You will be in check');
+    //                     nextElem.innerHTML = nextTempElem;
+    //                     curElem.innerHTML = curTempElem;
+    //                     return 1;
+    //             }
+    //         }
+    // }
 
-        // down and left
-        if (tempX - i >= 1 && tempY - i >= 1){
-            if (stop2){}
-            else if (
-                document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerHTML.search(color) > 0
-            ){
-                stop2 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == queen ||
-                document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == bishop){
-                        showError('You will be in check');
-                        nextElem.innerHTML = nextTempElem;
-                        curElem.innerHTML = curTempElem;
-                        return 1;
-                }
-            }
-    }
+    //     // down and left
+    //     if (tempX - i >= 1 && tempY - i >= 1){
+    //         if (stop2){}
+    //         else if (
+    //             document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerHTML.search(color) > 0
+    //         ){
+    //             stop2 = 1;
+    //         }
+    //         else {
+    //             if (document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == queen ||
+    //             document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == bishop){
+    //                     showError('You will be in check');
+    //                     nextElem.innerHTML = nextTempElem;
+    //                     curElem.innerHTML = curTempElem;
+    //                     return 1;
+    //             }
+    //         }
+    // }
 
-        // up and left
-        if (tempX - i >= 1 && tempY + i <= 8){
-            if (stop3){}
-            else if (
-                document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerHTML.search(color) > 0
-            ){
-                stop3 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == queen ||
-                document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == bishop){
-                        showError('You will be in check');
-                        nextElem.innerHTML = nextTempElem;
-                        curElem.innerHTML = curTempElem;
-                        return 1;
-                }
-            }
-    }
+    //     // up and left
+    //     if (tempX - i >= 1 && tempY + i <= 8){
+    //         if (stop3){}
+    //         else if (
+    //             document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerHTML.search(color) > 0
+    //         ){
+    //             stop3 = 1;
+    //         }
+    //         else {
+    //             if (document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == queen ||
+    //             document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == bishop){
+    //                     showError('You will be in check');
+    //                     nextElem.innerHTML = nextTempElem;
+    //                     curElem.innerHTML = curTempElem;
+    //                     return 1;
+    //             }
+    //         }
+    // }
 
-        // down and right
-        if (tempX + i <= 8 && tempY - i >= 1){
-            if (stop4){}
-            else if (
-                document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerHTML.search(color) > 0
-            ){
-                stop4 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == queen ||
-                document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == bishop){
-                        showError('You will be in check');
-                        nextElem.innerHTML = nextTempElem;
-                        curElem.innerHTML = curTempElem;
-                        return 1;
-                }
-            }
-    }
+    //     // down and right
+    //     if (tempX + i <= 8 && tempY - i >= 1){
+    //         if (stop4){}
+    //         else if (
+    //             document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerHTML.search(color) > 0
+    //         ){
+    //             stop4 = 1;
+    //         }
+    //         else {
+    //             if (document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == queen ||
+    //             document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == bishop){
+    //                     showError('You will be in check');
+    //                     nextElem.innerHTML = nextTempElem;
+    //                     curElem.innerHTML = curTempElem;
+    //                     return 1;
+    //             }
+    //         }
+    // }
     
-    }
+    // }
 
     // pawns
     var pawnDirection;
