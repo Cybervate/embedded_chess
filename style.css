@@ -70,6 +70,7 @@ input {
     position: absolute;
     font-family: Chess;
     font-size: 60px;
+    transform-origin: center;
 }
 
 /* .dark .piece {

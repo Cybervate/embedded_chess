@@ -9,7 +9,7 @@
 </head>
 <body>
 
-        <div class="board">
+        <div class="board" onclick="clicks(event);">
                 <div id="a8" class="square light"><div class="piece black">t</div></div>
                 <div id="b8" class="square dark"><div class="piece black">m</div></div>
                 <div id="c8" class="square light"><div class="piece black">v</div></div>
@@ -89,17 +89,29 @@
         <p id="flip">flip</p>
 
 </body>
-<script src="./main.js"></script>
 <script>
         var flip = 0
-        document.getElementById('flip').addEventListener('click', () => {
+        document.getElementById('flip').addEventListener('click', boardFlip)
+
+        function boardFlip() {
                 if (flip) {
                         document.querySelector('.board').style.transform = '';
+                        for (i = 1; i <= 8; i++) {
+                                for (j = 1; j <= 8; j++) {
+                                        document.getElementById(numberAsLetter(i) + String(j)).style.transform = '';
+                                }
+                        }
                         flip = 0;
                 } else {
                         document.querySelector('.board').style.transform = 'rotate(180deg)';
+                        for (i = 1; i <= 8; i++) {
+                                for (j = 1; j <= 8; j++) {
+                                        document.getElementById(numberAsLetter(i) + String(j)).style.transform = 'rotate(180deg)';
+                                }
+                        }
                         flip = 1;
                 }
-        })
+        }
 </script>
+<script src="./main.js"></script>
 </html>
