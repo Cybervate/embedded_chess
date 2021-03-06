@@ -66,7 +66,7 @@ function testVertAndHort(dX, dY, color) {
             }
         }
         // below
-        for (i = tempY - 1; i >= 1; i--){
+        for (i = dY - 1; i >= 1; i--){
             if (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(color) > 0){
                 break;
             }
