@@ -1,7 +1,7 @@
 function testDiagonals(dX, dY, color) {
 
     let opoColor;
-    color = 'white' ? opoColor = 'black' : opoColor = 'white';
+    color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
     let stop1 = 0;
     let stop2 = 0;

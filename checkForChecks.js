@@ -220,110 +220,115 @@ function checkForChecks(cur, next){
     }
 
     // knights
-    try {
-        // right up
-        if (
-        document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch(e) {
-
+    if (testKnights(tempX, tempY, color)) {
+        nextElem.innerHTML = nextTempElem;
+        curElem.innerHTML = curTempElem;
+        return 1;
     }
-    try {
-        // right down
-        if (
-        document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch(e) {
+    // try {
+    //     // right up
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch(e) {
 
-    }
-    try {
-        // left up
-        if (
-        document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // right down
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch(e) {
 
-    }
-    try {
-        // left down
-        if (
-        document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // left up
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
 
-    }
-    try {
-        // up right
-        if (
-        document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // left down
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
 
-    }
-    try {
-        // up left
-        if (
-        document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // up right
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
 
-    }
-    try {
-        // down right
-        if (
-        document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // up left
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
 
-    }
-    try {
-        // down left
-        if (
-        document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
-        ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // }
+    // try {
+    //     // down right
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
 
-    }
+    // }
+    // try {
+    //     // down left
+    //     if (
+    //     document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
+    //     ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
+
+    // }
 
     // diagonals
     if (testDiagonals(tempX, tempY, color)) {
@@ -414,35 +419,42 @@ function checkForChecks(cur, next){
     
     // }
 
+
+
     // pawns
-    var pawnDirection;
-    color == 'white' ? pawnDirection = 1 : pawnDirection = -1;
-    try {
-        if  (
-            document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerText == pawn &&
-            document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
-            ){
-                showError('You will be in check');
-                nextElem.innerHTML = nextTempElem;
-                curElem.innerHTML = curTempElem;
-                return 1;
-            }
-    } catch (e){
-
+    if (testPawns(tempX, tempY, color)) {
+        nextElem.innerHTML = nextTempElem;
+        curElem.innerHTML = curTempElem;
+        return 1;
     }
-    try {
-        if  (
-            document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerText == pawn &&
-            document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
-            ){
-            showError('You will be in check');
-            nextElem.innerHTML = nextTempElem;
-            curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    } catch (e) {
+    // var pawnDirection;
+    // color == 'white' ? pawnDirection = 1 : pawnDirection = -1;
+    // try {
+    //     if  (
+    //         document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerText == pawn &&
+    //         document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
+    //         ){
+    //             showError('You will be in check');
+    //             nextElem.innerHTML = nextTempElem;
+    //             curElem.innerHTML = curTempElem;
+    //             return 1;
+    //         }
+    // } catch (e){
 
-    }
+    // }
+    // try {
+    //     if  (
+    //         document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerText == pawn &&
+    //         document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
+    //         ){
+    //         showError('You will be in check');
+    //         nextElem.innerHTML = nextTempElem;
+    //         curElem.innerHTML = curTempElem;
+    //         return 1;
+    //     }
+    // } catch (e) {
+
+    // }
 
     // untemp
     nextElem.innerHTML = nextTempElem;
