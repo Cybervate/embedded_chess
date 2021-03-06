@@ -180,7 +180,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
 
 
     // verticals
-    if (testVertAndHort(tempX, tempY, opoColor)) {
+    if (testVertAndHort(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
         return 0;
@@ -188,21 +188,21 @@ function checkForCheckmates(cur, next, tempX, tempY){
 
     // // diagonals
     // diagonals
-    if (testDiagonals(tempX, tempY, opoColor)) {
+    if (testDiagonals(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
         return 0;
     }
 
     // // knights
-    if (testKnights(tempX, tempY, opoColor)) {
+    if (testKnights(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
         return 0;
     }
     
     // pawns
-    if (testPawns(tempX, tempY, opoColor)) {
+    if (testPawns(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
         return 0;
