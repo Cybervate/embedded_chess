@@ -34,7 +34,7 @@ function checkForChecks(cur, next){
         }
     }
 
-    // verticals
+    // verticals & horizontals
     if (testVertAndHort(tempX, tempY, color)) {
         nextElem.innerHTML = nextTempElem;
         curElem.innerHTML = curTempElem;

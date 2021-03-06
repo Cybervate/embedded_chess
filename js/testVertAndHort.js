@@ -11,9 +11,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(dX) + String(i)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(dX) + String(i)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(dX) + String(i)).innerText == rook ||
@@ -32,9 +35,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(dX) + String(i)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(dX) + String(i)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(dX) + String(i)).innerText == rook ||
@@ -53,9 +59,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(dX) + String(i)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(dX) + String(i)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(dX) + String(i)).innerText == rook ||
@@ -73,9 +82,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(dX) + String(i)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(dX) + String(i)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(dX) + String(i)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(dX) + String(i)).innerText == rook ||
@@ -96,9 +108,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(i) + String(dY)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(i) + String(dY)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(i) + String(dY)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(i) + String(dY)).innerText == rook ||
@@ -116,9 +131,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(i) + String(dY)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(i) + String(dY)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(i) + String(dY)).innerText == rook ||
@@ -137,9 +155,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(i) + String(dY)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(i) + String(dY)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(i) + String(dY)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(i) + String(dY)).innerText == rook ||
@@ -157,9 +178,12 @@ function testVertAndHort(dX, dY, color) {
             else if 
             (document.getElementById(numberAsLetter(i) + String(dY)).innerHTML.search(opoColor) > 0 
             &&
-            document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(i) + String(Y)).innerText == queen) 
-                {} else {break} 
+            (document.getElementById(numberAsLetter(i) + String(dY)).innerText != rook
+            &&
+            document.getElementById(numberAsLetter(i) + String(dY)).innerText != queen 
+            ))
+            {
+                break
             }
             else if (
             document.getElementById(numberAsLetter(i) + String(dY)).innerText == rook ||

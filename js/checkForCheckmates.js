@@ -19,7 +19,7 @@ function checkForChecksForCheckmate(cur, next){
 
     let color;
     let opoColor;
-    turn % 2 != 0 ? color = 'white' : color = 'black';
+    turn % 2 == 0 ? color = 'white' : color = 'black';
     color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
         
@@ -36,401 +36,31 @@ function checkForChecksForCheckmate(cur, next){
 
 
 // verticals
-if (tempY == 1){
-    for (i = tempY + 1; i <= 8; i++){
-        if (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(color) > 0){
-            break;
-        }
-        else if 
-            (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(opoColor) > 0 
-            &&
-            document.getElementById(numberAsLetter(tempX) + String(i)).innerText != rook ){
-                if (document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen) 
-                {} else {break} 
-            }
-        else if (
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-} else if (tempY == 8){
-    for (i = tempY - 1; i >= 1; i--){
-        if (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-} else {
-    // above
-    for (i = tempY + 1; i <= 8; i++){
-        if (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-    // below
-    for (i = tempY - 1; i >= 1; i--){
-        if (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(tempX) + String(i)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == rook ||
-        document.getElementById(numberAsLetter(tempX) + String(i)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-}
-
-// horizontals
-if (tempX == 1){
-    for (i = tempX + 1; i <= 8; i++){
-        if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-} else if (tempX == 8){
-    for (i = tempX - 1; i >= 1; i--){
-        if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-} else {
-    // above
-    for (i = tempX + 1; i <= 8; i++){
-        if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
-    // below
-    for (i = tempX - 1; i >= 1; i--){
-        if (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(color) > 0){
-            break;
-        }else if 
-        (document.getElementById(numberAsLetter(i) + String(tempY)).innerHTML.search(opoColor) > 0 
-        &&
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText != rook ){
-            if (document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen) 
-            {} else {break} 
-        }
-        else if (
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == rook ||
-        document.getElementById(numberAsLetter(i) + String(tempY)).innerText == queen
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-    }
+// verticals & horizontals
+if (testVertAndHort(tempX, tempY, color)) {
+    checkForCheckmates(cur, next, tempX, tempY);
+    return 1;
 }
 
 // knights
-try {
-    // right up
-    if (
-    document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch(e) {
-
-}
-try {
-    // right down
-    if (
-    document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX + 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch(e) {
-
-}
-try {
-    // left up
-    if (
-    document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY + 1)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
-}
-try {
-    // left down
-    if (
-    document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerText == knight && document.getElementById(numberAsLetter(tempX - 2) + String(tempY - 1)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
-}
-try {
-    // up right
-    if (
-    document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
-}
-try {
-    // up left
-    if (
-    document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY + 2)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
-}
-try {
-    // down right
-    if (
-    document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX + 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
-}
-try {
-    // down left
-    if (
-    document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerText == knight && document.getElementById(numberAsLetter(tempX - 1) + String(tempY - 2)).innerHTML.search(opoColor) > 0
-    ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
-
+// knights
+if (testKnights(tempX, tempY, color)) {
+    checkForCheckmates(cur, next, tempX, tempY);
+    return 1;
 }
 
 // diagonals
-var stop1 = 0;
-var stop2 = 0;
-var stop3 = 0;
-var stop4 = 0;
-for (i = 1; i <= 8; i++){
-    // up and right
-    if (tempX + i <= 8 && tempY + i <= 8){
-        if (stop1){}
-        else if (
-            document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerHTML.search(color) > 0
-        ){
-            stop1 = 1;
-        }
-        else {
-            if (document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == queen ||
-            document.getElementById(numberAsLetter(tempX + i) + String(tempY + i)).innerText == bishop){
-                    checkForCheckmates(cur, next, tempX, tempY);
-                    // nextElem.innerHTML = nextTempElem;
-                    // curElem.innerHTML = curTempElem;
-                    return 1;
-            }
-        }
-}
-
-    // down and left
-    if (tempX - i >= 1 && tempY - i >= 1){
-        if (stop2){}
-        else if (
-            document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerHTML.search(color) > 0
-        ){
-            stop2 = 1;
-        }
-        else {
-            if (document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == queen ||
-            document.getElementById(numberAsLetter(tempX - i) + String(tempY - i)).innerText == bishop){
-                    checkForCheckmates(cur, next, tempX, tempY);
-                    // nextElem.innerHTML = nextTempElem;
-                    // curElem.innerHTML = curTempElem;
-                    return 1;
-            }
-        }
-}
-
-    // up and left
-    if (tempX - i >= 1 && tempY + i <= 8){
-        if (stop3){}
-        else if (
-            document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerHTML.search(color) > 0
-        ){
-            stop3 = 1;
-        }
-        else {
-            if (document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == queen ||
-            document.getElementById(numberAsLetter(tempX - i) + String(tempY + i)).innerText == bishop){
-                    checkForCheckmates(cur, next, tempX, tempY);
-                    // nextElem.innerHTML = nextTempElem;
-                    // curElem.innerHTML = curTempElem;
-                    return 1;
-            }
-        }
-}
-
-    // down and right
-    if (tempX + i <= 8 && tempY - i >= 1){
-        if (stop4){}
-        else if (
-            document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerHTML.search(color) > 0
-        ){
-            stop4 = 1;
-        }
-        else {
-            if (document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == queen ||
-            document.getElementById(numberAsLetter(tempX + i) + String(tempY - i)).innerText == bishop){
-                    checkForCheckmates(cur, next, tempX, tempY);
-                    // nextElem.innerHTML = nextTempElem;
-                    // curElem.innerHTML = curTempElem;
-                    return 1;
-            }
-        }
-}
-
+if (testDiagonals(tempX, tempY, color)) {
+    checkForCheckmates(cur, next, tempX, tempY);
+    return 1;
 }
 
 // pawns
-var pawnDirection;
-color == 'white' ? pawnDirection = 1 : pawnDirection = -1;
-try {
-    if  (
-        document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerText == pawn &&
-        document.getElementById(numberAsLetter(tempX + 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
-        ){
-            checkForCheckmates(cur, next, tempX, tempY);
-            // nextElem.innerHTML = nextTempElem;
-            // curElem.innerHTML = curTempElem;
-            return 1;
-        }
-} catch (e){
-
+if (testPawns(tempX, tempY, color)) {
+    checkForCheckmates(cur, next, tempX, tempY);
+    return 1;
 }
-try {
-    if  (
-        document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerText == pawn &&
-        document.getElementById(numberAsLetter(tempX - 1) + String(tempY + pawnDirection)).innerHTML.search(opoColor) > 0
-        ){
-        checkForCheckmates(cur, next, tempX, tempY);
-        // nextElem.innerHTML = nextTempElem;
-        // curElem.innerHTML = curTempElem;
-        return 1;
-    }
-} catch (e) {
 
-}
 
 // untemp
 // nextElem.innerHTML = nextTempElem;
@@ -466,6 +96,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -476,6 +107,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -486,6 +118,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -496,6 +129,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -506,6 +140,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -516,6 +151,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -526,6 +162,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
@@ -536,376 +173,40 @@ function checkForCheckmates(cur, next, tempX, tempY){
             )
         {
             turn -= 1
+            alertError = 1
             return 0;
         } 
     }
 
 
-// verticals
-    if (nextNumber == 1){
-        for (i = nextNumber + 1; i <= 8; i++){
-            if (document.getElementById(nextLetter + String(i)).innerHTML.search(opoColor) > 0){
-                break;
-            } 
-            else if 
-        (document.getElementById(nextLetter + String(i)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(i)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(i)).innerText == rook ||
-            document.getElementById(nextLetter + String(i)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-    } else if (nextNumber == 8){
-        for (i = nextNumber - 1; i >= 1; i--){
-            if (document.getElementById(nextLetter + String(i)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(i)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(i)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(i)).innerText == rook ||
-            document.getElementById(nextLetter + String(i)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-    } else {
-        // above
-        for (i = nextNumber + 1; i <= 8; i++){
-            if (document.getElementById(nextLetter + String(i)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(i)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(i)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(i)).innerText == rook ||
-            document.getElementById(nextLetter + String(i)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-        // below
-        for (i = nextNumber - 1; i >= 1; i--){
-            if (document.getElementById(nextLetter + String(i)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(i)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(i)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(i)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(i)).innerText == rook ||
-            document.getElementById(nextLetter + String(i)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
+    // verticals
+    if (testVertAndHort(tempX, tempY, opoColor)) {
+        turn -= 1
+        alertError = 1
+        return 0;
     }
-
-    // // horizontals
-    if (nextLetterAsNumber == 1){
-        for (i = nextLetterAsNumber + 1; i <= 8; i++){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(nextNumber)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(nextNumber)).innerText == rook ||
-            document.getElementById(nextLetter + String(nextNumber)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-    } else if (nextLetterAsNumber == 8){
-        for (i = tempX - 1; i >= 1; i--){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(nextNumber)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(nextNumber)).innerText == rook ||
-            document.getElementById(nextLetter + String(nextNumber)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-    } else {
-        // above
-        for (i = nextLetterAsNumber + 1; i <= 8; i++){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(nextNumber)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(nextNumber)).innerText == rook ||
-            document.getElementById(nextLetter + String(nextNumber)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-        // below
-        for (i = nextLetterAsNumber - 1; i >= 1; i--){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(opoColor) > 0){
-                break;
-            }
-            else if 
-        (document.getElementById(nextLetter + String(nextNumber)).innerHTML.search(color) > 0 
-        &&
-        document.getElementById(nextLetter + String(nextNumber)).innerText != rook ){
-            if (document.getElementById(nextLetter + String(nextNumber)).innerText == queen) 
-            {} else {break} 
-        }
-            else if (
-            document.getElementById(nextLetter + String(nextNumber)).innerText == rook ||
-            document.getElementById(nextLetter + String(nextNumber)).innerText == queen
-            ){
-                turn -= 1
-                return 0;
-            }
-        }
-    }
-
 
     // // diagonals
-    var stop1 = 0;
-    var stop2 = 0;
-    var stop3 = 0;
-    var stop4 = 0;
-    for (i = 1; i <= 8; i++){
-        // up and right
-        if (nextLetterAsNumber + i <= 8 && nextNumber + i <= 8){
-            if (stop1){}
-            else if (
-                document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber + i)).innerHTML.search(opoColor) > 0
-            ){
-                stop1 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber + i)).innerText == queen ||
-                document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber + i)).innerText == bishop){
-                    turn -= 1
-                    return 0;
-                }
-            }
+    // diagonals
+    if (testDiagonals(tempX, tempY, opoColor)) {
+        turn -= 1
+        alertError = 1
+        return 0;
     }
-
-        // down and left
-        if (nextLetterAsNumber - i >= 1 && nextNumber - i >= 1){
-            if (stop2){}
-            else if (
-                document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber - i)).innerHTML.search(opoColor) > 0
-            ){
-                stop2 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber - i)).innerText == queen ||
-                document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber - i)).innerText == bishop){
-                    turn -= 1
-                    return 0;
-                }
-            }
-    }
-
-        // up and left
-        if (nextLetterAsNumber - i >= 1 && nextNumber + i <= 8){
-            if (stop3){}
-            else if (
-                document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber + i)).innerHTML.search(opoColor) > 0
-            ){
-                stop3 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber + i)).innerText == queen ||
-                document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber + i)).innerText == bishop){
-                    turn -= 1
-                    return 0;
-                }
-            }
-    }
-
-        // down and right
-        if (nextLetterAsNumber + i <= 8 && nextNumber - i >= 1){
-            if (stop4){}
-            else if (
-                document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber - i)).innerHTML.search(opoColor) > 0
-            ){
-                stop4 = 1;
-            }
-            else {
-                if (document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber - i)).innerText == queen ||
-                document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber - i)).innerText == bishop){
-                    turn -= 1
-                    return 0;
-                }
-            }
-    }
-
-    }
-
-
 
     // // knights
-    try {
-        // right up
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber + 2) + String(nextNumber + 1)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber + 2) + String(nextNumber + 1)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch(e) {
-
-    }
-    try {
-        // right down
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber + 2) + String(nextNumber - 1)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber + 2) + String(nextNumber - 1)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch(e) {
-
-    }
-    try {
-        // left up
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber - 2) + String(nextNumber + 1)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber - 2) + String(nextNumber + 1)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-    try {
-        // left down
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber - 2) + String(nextNumber - 1)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber - 2) + String(nextNumber - 1)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-    try {
-        // up right
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber + 2)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber + 2)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-    try {
-        // up left
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber + 2)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber + 2)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-    try {
-        // down right
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber - 2)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber - 2)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-    try {
-        // down left
-        if (
-        document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber - 2)).innerText == knight && document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber - 2)).innerHTML.search(color) > 0
-        ){
-            turn -= 1
-            return 0;
-        }
-    } catch (e) {
-
-    }
-
-
-
-    // // pawns
-    var pawnDirection;
-    color == 'white' ? pawnDirection = 1 : pawnDirection = -1;
-    try {
-        if  (
-            document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber + pawnDirection)).innerText == pawn &&
-            document.getElementById(numberAsLetter(nextLetterAsNumber + 1) + String(nextNumber + pawnDirection)).innerHTML.search(color) > 0
-            ){
-                turn -= 1
-                return 0;
-            }
-    } catch (e){
-
-    }
-    try {
-        if  (
-            document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber + pawnDirection)).innerText == pawn &&
-            document.getElementById(numberAsLetter(nextLetterAsNumber - 1) + String(nextNumber + pawnDirection)).innerHTML.search(color) > 0
-            ){
-                turn -= 1
-                return 0;
-        }
-    } catch (e) {
-
+    if (testKnights(tempX, tempY, opoColor)) {
+        turn -= 1
+        alertError = 1
+        return 0;
     }
     
+    // pawns
+    if (testPawns(tempX, tempY, opoColor)) {
+        turn -= 1
+        alertError = 1
+        return 0;
+    }
 
     // blockers
     if (document.getElementById(next).innerText == rook || document.getElementById(next).innerText == queen) {
