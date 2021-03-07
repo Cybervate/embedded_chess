@@ -22,11 +22,12 @@ function checkForChecksForCheckmate(cur, next){
     turn % 2 == 0 ? color = 'white' : color = 'black';
     color == 'white' ? opoColor = 'black' : opoColor = 'white';
 
-        
+    alertError = 0    
+
     for (i = 1; i <= 8; i++){
         for (j = 1; j <= 8; j++){
             if (document.getElementById(numberAsLetter(j) + String(i)).innerText == king &&
-                document.getElementById(numberAsLetter(j) + String(i)).innerHTML.search(color) > 0){
+                document.getElementById(numberAsLetter(j) + String(i)).innerHTML.search(opoColor) > 0){
                     var tempX = j;
                     var tempY = i;
                     break;
@@ -34,37 +35,38 @@ function checkForChecksForCheckmate(cur, next){
         }
     }
 
-
+console.log(tempX, tempY)
 // verticals
 // verticals & horizontals
-if (testVertAndHort(tempX, tempY, color)) {
+if (testVertAndHort(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-
+console.log(color, '1');
 // knights
 // knights
-if (testKnights(tempX, tempY, color)) {
+if (testKnights(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-
+console.log(color, '2');
 // diagonals
-if (testDiagonals(tempX, tempY, color)) {
+if (testDiagonals(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-
+console.log(color, '3');
 // pawns
-if (testPawns(tempX, tempY, color)) {
+if (testPawns(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-
+console.log(color, '4');
 
 // untemp
 // nextElem.innerHTML = nextTempElem;
 // curElem.innerHTML = curTempElem;
+    alertError = 1
 }
 
 
@@ -179,7 +181,6 @@ function checkForCheckmates(cur, next, tempX, tempY){
     }
 
 
-    // verticals
     if (testVertAndHort(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
