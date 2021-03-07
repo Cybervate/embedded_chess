@@ -16,7 +16,7 @@ function testKnights(dX, dY, color) {
     try {
         // right down
         if (
-        document.getElementById(numberAsLetter(dX + 2) + String(dY - 1)).innerText == knight && document.getElementById(numberAsLetter(dX + 2) + String(Y - 1)).innerHTML.search(opoColor) > 0
+        document.getElementById(numberAsLetter(dX + 2) + String(dY - 1)).innerText == knight && document.getElementById(numberAsLetter(dX + 2) + String(dY - 1)).innerHTML.search(opoColor) > 0
         ){
             showError('You will be in check');
             return 1;
