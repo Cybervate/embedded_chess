@@ -42,26 +42,25 @@ if (testVertAndHort(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-console.log(color, '1');
+
 // knights
 // knights
 if (testKnights(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-console.log(color, '2');
+
 // diagonals
 if (testDiagonals(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-console.log(color, '3');
+
 // pawns
 if (testPawns(tempX, tempY, opoColor)) {
     checkForCheckmates(cur, next, tempX, tempY);
     return 1;
 }
-console.log(color, '4');
 
 // untemp
 // nextElem.innerHTML = nextTempElem;
@@ -180,14 +179,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
         } 
     }
 
-
+    // vert and hort
     if (testVertAndHort(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
         alertError = 1
         return 0;
     }
 
-    // // diagonals
     // diagonals
     if (testDiagonals(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
@@ -208,39 +206,303 @@ function checkForCheckmates(cur, next, tempX, tempY){
         alertError = 1
         return 0;
     }
-
     // blockers
+    // rook || queen | verts and horts
     if (document.getElementById(next).innerText == rook || document.getElementById(next).innerText == queen) {
+
         if (tempX > nextLetterAsNumber + 1 || tempY > nextNumber + 1 ||
-            tempX < nextLetterAsNumber - 1 || tempY < nextNumber - 1) { } 
-            else {
+            tempX < nextLetterAsNumber - 1 || tempY < nextNumber - 1) { 
+
             // vertical
-            if (nextLetterAsNumber == tempX) {
+            if (nextLetterAsNumber == tempX) 
+            {
                 // above
                 if (tempY > nextNumber) {
                     for (i = nextNumber + 1; i <= 8; i++) {
                         if (document.getElementById(nextLetter + String(i)).innerText == king) {break}
+                        else {
+                            
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
                     }
                 } 
                 // below
                 else {
+                    for (i = nextNumber - 1; i >= 1; i--) {
+                        if (document.getElementById(nextLetter + String(i)).innerText == king) {break}
+                        else {
+                            
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
 
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
+                    }
                 }
             }
-            // horizontal
-            else {
 
+            // horizontal
+            else if (nextNumber == tempY) {
+               // right
+                if (tempX > nextLetterAsNumber) {
+                for (i = nextLetterAsNumber + 1; i <= 8; i++) {
+                    if (document.getElementById(numberAsLetter(i) + nextNumber).innerText == king) {break}
+                    else {
+                        
+                        // vert and hort
+                        if (testVertAndHort(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                        // diagonals
+                        if (testDiagonals(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                        // knights
+                        if (testKnights(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                    }
+                }
+            } 
+            // left
+            else {
+                for (i = nextLetterAsNumber - 1; i >= 1; i--) {
+                    if (document.getElementById(numberAsLetter(i) + nextNumber).innerText == king) {break}
+                    else {
+                        
+                        // vert and hort
+                        if (testVertAndHort(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                        // diagonals
+                        if (testDiagonals(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                        // knights
+                        if (testKnights(i, nextNumber, color)) {
+                            turn -= 1
+                            alertError = 1
+                            return 0;
+                        }
+
+                    }
+                }
             }
+            }
+
         }
     } 
 
-    if (document.getElementById(next).innerText == bishop) {
+    // bishop || queen
+    if (document.getElementById(next).innerText == bishop || document.getElementById(next).innerText == queen) {
 
+        if (tempX > nextLetterAsNumber + 1 || tempY > nextNumber + 1 ||
+            tempX < nextLetterAsNumber - 1 || tempY < nextNumber - 1) {
+
+                // up right
+                if (tempX > nextLetterAsNumber && tempY > nextNumber) {
+
+                    for (i = 1; i <= 8; i++) {
+
+                        if (document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber + i)).innerText == king
+                        ||
+                        (nextLetterAsNumber + i > 8 || nextNumber + i > 8)
+                        ) {
+                            break;
+                        } else {
+
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber + i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber + i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber + i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
+                    }
+                }
+
+                // up left
+                if (tempX < nextLetterAsNumber && tempY > nextNumber) {
+
+                    for (i = 1; i <= 8; i++) {
+
+                        if (document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber + i)).innerText == king
+                        ||
+                        (nextLetterAsNumber - i < 1 || nextNumber + i > 8)
+                        ) {
+                            break;
+                        } else {
+
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber - i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber - i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber - i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
+                    }
+
+                }
+
+                // down right
+                if (tempX > nextLetterAsNumber && tempY < nextNumber) {
+
+                    for (i = 1; i <= 8; i++) {
+
+                        if (document.getElementById(numberAsLetter(nextLetterAsNumber + i) + String(nextNumber - i)).innerText == king
+                        ||
+                        (nextLetterAsNumber + i > 8 || nextNumber - i < 1)
+                        ) {
+                            break;
+                        } else {
+
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber + i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber + i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber + i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
+                    }
+
+                }
+
+                // down left
+                if (tempX < nextLetterAsNumber && tempY < nextNumber) {
+
+                    for (i = 1; i <= 8; i++) {
+
+                        if (document.getElementById(numberAsLetter(nextLetterAsNumber - i) + String(nextNumber - i)).innerText == king
+                        ||
+                        (nextLetterAsNumber - i < 1 || nextNumber - i < 1)
+                        ) {break} 
+                        else {
+
+                            // vert and hort
+                            if (testVertAndHort(nextLetterAsNumber - i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // diagonals
+                            if (testDiagonals(nextLetterAsNumber - i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // knights
+                            if (testKnights(nextLetterAsNumber - i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
     } 
-
-    if (document.getElementById(next).innerText == bishop) {
-
-    }
 
     alertError = 1
     showError('checkmate, ' + opoColor + ' wins');
