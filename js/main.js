@@ -54,6 +54,7 @@ function move(cur, next, test){
         nextElem.innerHTML = curElem.innerHTML;
         curElem.innerHTML = ''
         checkForChecksForCheckmate(cur, next);
+        checkForStalemates(cur, next);
         if (turn % 2 == 0) {
             flip = 0;
             boardFlip();
