@@ -54,7 +54,10 @@ function move(cur, next, test){
     if (test == 0) {
         nextElem.innerHTML = curElem.innerHTML;
         curElem.innerHTML = ''
-        checkForChecksForCheckmate(cur, next);
+        if (checkForChecksForCheckmate(cur, next)){
+        } else {
+            checkForStalemates(cur, next);
+        }
         if (turn % 2 == 0) {
             flip = 0;
             boardFlip();
@@ -62,8 +65,7 @@ function move(cur, next, test){
             flip = 1;
             boardFlip();
         }
-        turn += 1;
-        checkForStalemates(cur, next);    
+        turn += 1;    
     }    
 
     console.log(turn)

@@ -18,8 +18,10 @@ function checkForStalemates(cur, next) {
     alertError = 0
 
     let placeX, placeY;
-    for (i = 1; i <= 8; i++) {
-        for (j = 1; j <= 8; j++) {
+
+    let i = 1, j = 1;
+    while (i <= 8) {
+        while (j <= 8) {
             console.log(i, j);
 
             if (document.getElementById(numberAsLetter(i) + String(j)).innerHTML.search(color) > 0)
@@ -39,7 +41,6 @@ function checkForStalemates(cur, next) {
                                 numberAsLetter(placeX) + String(placeY), 
                                 numberAsLetter(placeX) + String(placeY + k), 1)
                             ) {return 0}
-                        
 
                         // down
                         if (
@@ -48,7 +49,6 @@ function checkForStalemates(cur, next) {
                                 numberAsLetter(placeX) + String(placeY), 
                                 numberAsLetter(placeX) + String(placeY - k), 1)
                             ) {return 0}
-                            
 
                     }
 
@@ -134,10 +134,11 @@ function checkForStalemates(cur, next) {
                     }
 
                 }
-
+                
             }
-            
+            j++;
         }
+        i++;
     }
 
     alertError = 1
