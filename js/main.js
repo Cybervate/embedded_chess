@@ -16,6 +16,7 @@ var alertError = 1
 
 // called every move
 function move(cur, next, test){
+    document.querySelector('.messageBox').innerText = '';
     curElem = document.getElementById(cur);
     nextElem = document.getElementById(next);
 
@@ -54,7 +55,6 @@ function move(cur, next, test){
         nextElem.innerHTML = curElem.innerHTML;
         curElem.innerHTML = ''
         checkForChecksForCheckmate(cur, next);
-        checkForStalemates(cur, next);
         if (turn % 2 == 0) {
             flip = 0;
             boardFlip();
@@ -62,7 +62,8 @@ function move(cur, next, test){
             flip = 1;
             boardFlip();
         }
-        turn += 1
+        turn += 1;
+        checkForStalemates(cur, next);    
     }    
 
     console.log(turn)
@@ -73,8 +74,9 @@ function move(cur, next, test){
 function showError(message){
     if (alertError){
         alert(message)
+        // document.querySelector('.messageBox').innerText = message;
     } else {
-        console.log(message)
+        console.log(message) 
     }
 }
 
@@ -261,7 +263,7 @@ document.getElementById('commands').addEventListener('keyup', function (event) {
 })
 
 const move_list = [
-    'e2', 'e4', 'e7', 'e5', 'f1', 'c4', 'f8', 'c5', 'd1', 'f3', 'a7', 'a6', 'h2', 'h4', 'a6', 'a5', 'h1', 'h3', 'a5', 'a4', 'f3', 'c3', 'a4', 'a3', 'h3', 'g3', 'b7', 'b6', 'g3', 'g5', 'c8', 'b7'
+    // 'e2', 'e4', 'e7', 'e5', 'f1', 'c4', 'f8', 'c5', 'd1', 'f3', 'a7', 'a6', 'h2', 'h4', 'a6', 'a5', 'h1', 'h3', 'a5', 'a4', 'f3', 'c3', 'a4', 'a3', 'h3', 'g3', 'b7', 'b6', 'g3', 'g5', 'c8', 'b7'
 ]
 
 let moveVar = 0

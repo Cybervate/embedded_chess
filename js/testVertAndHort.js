@@ -28,7 +28,6 @@ function testVertAndHort(dX, dY, color) {
         }
     } else if (dY == 8){
         for (i = dY - 1; i >= 1; i--){
-            console.log('m')
             if (document.getElementById(numberAsLetter(dX) + String(i)).innerHTML.search(color) > 0){
                 break;
             }
