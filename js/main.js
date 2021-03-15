@@ -75,8 +75,8 @@ function move(cur, next, test){
 
 function showError(message){
     if (alertError){
-        alert(message)
-        // document.querySelector('.messageBox').innerText = message;
+        // alert(message)
+        document.querySelector('.messageBox').innerText = message;
     } else {
         console.log(message) 
     }
@@ -131,91 +131,93 @@ function checkForCaptureOwnPiece(curElem, nextElem){
 }
 
 function resetGame(){
-    var turn = 0; // even = white, odd = black
+    location.reload();
+    return false;
+    // var turn = 0; // even = white, odd = black
 
-    var white_castle_right = 1 // 1 = true, 0 = false
-    var white_castle_left = 1 
-    var black_castle_right = 1 
-    var black_castle_left = 1
+    // var white_castle_right = 1 // 1 = true, 0 = false
+    // var white_castle_left = 1 
+    // var black_castle_right = 1 
+    // var black_castle_left = 1
 
-    var alertError = 1
+    // var alertError = 1
 
-    document.querySelector('.board').innerHTML = `
-    <div id="a8" class="square light"><div class="piece black">t</div></div>
-    <div id="b8" class="square dark"><div class="piece black">m</div></div>
-    <div id="c8" class="square light"><div class="piece black">v</div></div>
-    <div id="d8" class="square dark"><div class="piece black">w</div></div>
-    <div id="e8" class="square light"><div class="piece black">l</div></div>
-    <div id="f8" class="square dark"><div class="piece black">v</div></div>
-    <div id="g8" class="square light"><div class="piece black">m</div></div>
-    <div id="h8" class="square dark"><div class="piece black">t</div></div>
+    // document.querySelector('.board').innerHTML = `
+    // <div id="a8" class="square light"><div class="piece black">t</div></div>
+    // <div id="b8" class="square dark"><div class="piece black">m</div></div>
+    // <div id="c8" class="square light"><div class="piece black">v</div></div>
+    // <div id="d8" class="square dark"><div class="piece black">w</div></div>
+    // <div id="e8" class="square light"><div class="piece black">l</div></div>
+    // <div id="f8" class="square dark"><div class="piece black">v</div></div>
+    // <div id="g8" class="square light"><div class="piece black">m</div></div>
+    // <div id="h8" class="square dark"><div class="piece black">t</div></div>
 
-    <div id="a7" class="square dark"><div class="piece black">o</div></div>
-    <div id="b7" class="square light"><div class="piece black">o</div></div>
-    <div id="c7" class="square dark"><div class="piece black">o</div></div>
-    <div id="d7" class="square light"><div class="piece black">o</div></div>
-    <div id="e7" class="square dark"><div class="piece black">o</div></div>
-    <div id="f7" class="square light"><div class="piece black">o</div></div>
-    <div id="g7" class="square dark"><div class="piece black">o</div></div>
-    <div id="h7" class="square light"><div class="piece black">o</div></div>
+    // <div id="a7" class="square dark"><div class="piece black">o</div></div>
+    // <div id="b7" class="square light"><div class="piece black">o</div></div>
+    // <div id="c7" class="square dark"><div class="piece black">o</div></div>
+    // <div id="d7" class="square light"><div class="piece black">o</div></div>
+    // <div id="e7" class="square dark"><div class="piece black">o</div></div>
+    // <div id="f7" class="square light"><div class="piece black">o</div></div>
+    // <div id="g7" class="square dark"><div class="piece black">o</div></div>
+    // <div id="h7" class="square light"><div class="piece black">o</div></div>
     
-    <div id="a6" class="square light"><div class="piece"></div></div>
-    <div id="b6" class="square dark"><div class="piece"></div></div>
-    <div id="c6" class="square light"><div class="piece"></div></div>
-    <div id="d6" class="square dark"><div class="piece"></div></div>
-    <div id="e6" class="square light"><div class="piece"></div></div>
-    <div id="f6" class="square dark"><div class="piece"></div></div>
-    <div id="g6" class="square light"><div class="piece"></div></div>
-    <div id="h6" class="square dark"><div class="piece"></div></div>
+    // <div id="a6" class="square light"><div class="piece"></div></div>
+    // <div id="b6" class="square dark"><div class="piece"></div></div>
+    // <div id="c6" class="square light"><div class="piece"></div></div>
+    // <div id="d6" class="square dark"><div class="piece"></div></div>
+    // <div id="e6" class="square light"><div class="piece"></div></div>
+    // <div id="f6" class="square dark"><div class="piece"></div></div>
+    // <div id="g6" class="square light"><div class="piece"></div></div>
+    // <div id="h6" class="square dark"><div class="piece"></div></div>
 
-    <div id="a5" class="square dark"><div class="piece"></div></div>
-    <div id="b5" class="square light"><div class="piece"></div></div>
-    <div id="c5" class="square dark"><div class="piece"></div></div>
-    <div id="d5" class="square light"><div class="piece"></div></div>
-    <div id="e5" class="square dark"><div class="piece"></div></div>
-    <div id="f5" class="square light"><div class="piece"></div></div>
-    <div id="g5" class="square dark"><div class="piece"></div></div>
-    <div id="h5" class="square light"><div class="piece"></div></div>
+    // <div id="a5" class="square dark"><div class="piece"></div></div>
+    // <div id="b5" class="square light"><div class="piece"></div></div>
+    // <div id="c5" class="square dark"><div class="piece"></div></div>
+    // <div id="d5" class="square light"><div class="piece"></div></div>
+    // <div id="e5" class="square dark"><div class="piece"></div></div>
+    // <div id="f5" class="square light"><div class="piece"></div></div>
+    // <div id="g5" class="square dark"><div class="piece"></div></div>
+    // <div id="h5" class="square light"><div class="piece"></div></div>
     
-    <div id="a4" class="square light"><div class="piece"></div></div>
-    <div id="b4" class="square dark"><div class="piece"></div></div>
-    <div id="c4" class="square light"><div class="piece"></div></div>
-    <div id="d4" class="square dark"><div class="piece"></div></div>
-    <div id="e4" class="square light"><div class="piece"></div></div>
-    <div id="f4" class="square dark"><div class="piece"></div></div>
-    <div id="g4" class="square light"><div class="piece"></div></div>
-    <div id="h4" class="square dark"><div class="piece"></div></div>
+    // <div id="a4" class="square light"><div class="piece"></div></div>
+    // <div id="b4" class="square dark"><div class="piece"></div></div>
+    // <div id="c4" class="square light"><div class="piece"></div></div>
+    // <div id="d4" class="square dark"><div class="piece"></div></div>
+    // <div id="e4" class="square light"><div class="piece"></div></div>
+    // <div id="f4" class="square dark"><div class="piece"></div></div>
+    // <div id="g4" class="square light"><div class="piece"></div></div>
+    // <div id="h4" class="square dark"><div class="piece"></div></div>
     
-    <div id="a3" class="square dark"><div class="piece"></div></div>
-    <div id="b3" class="square light"><div class="piece"></div></div>
-    <div id="c3" class="square dark"><div class="piece"></div></div>
-    <div id="d3" class="square light"><div class="piece"></div></div>
-    <div id="e3" class="square dark"><div class="piece"></div></div>
-    <div id="f3" class="square light"><div class="piece"></div></div>
-    <div id="g3" class="square dark"><div class="piece"></div></div>
-    <div id="h3" class="square light"><div class="piece"></div></div>
+    // <div id="a3" class="square dark"><div class="piece"></div></div>
+    // <div id="b3" class="square light"><div class="piece"></div></div>
+    // <div id="c3" class="square dark"><div class="piece"></div></div>
+    // <div id="d3" class="square light"><div class="piece"></div></div>
+    // <div id="e3" class="square dark"><div class="piece"></div></div>
+    // <div id="f3" class="square light"><div class="piece"></div></div>
+    // <div id="g3" class="square dark"><div class="piece"></div></div>
+    // <div id="h3" class="square light"><div class="piece"></div></div>
     
-    <div id="a2" class="square light"><div class="piece white">o</div></div>
-    <div id="b2" class="square dark"><div class="piece white">o</div></div>
-    <div id="c2" class="square light"><div class="piece white">o</div></div>
-    <div id="d2" class="square dark"><div class="piece white">o</div></div>
-    <div id="e2" class="square light"><div class="piece white">o</div></div>
-    <div id="f2" class="square dark"><div class="piece white">o</div></div>
-    <div id="g2" class="square light"><div class="piece white">o</div></div>
-    <div id="h2" class="square dark"><div class="piece white">o</div></div>
+    // <div id="a2" class="square light"><div class="piece white">o</div></div>
+    // <div id="b2" class="square dark"><div class="piece white">o</div></div>
+    // <div id="c2" class="square light"><div class="piece white">o</div></div>
+    // <div id="d2" class="square dark"><div class="piece white">o</div></div>
+    // <div id="e2" class="square light"><div class="piece white">o</div></div>
+    // <div id="f2" class="square dark"><div class="piece white">o</div></div>
+    // <div id="g2" class="square light"><div class="piece white">o</div></div>
+    // <div id="h2" class="square dark"><div class="piece white">o</div></div>
 
-    <div id="a1" class="square dark"><div class="piece white">t</div></div>
-    <div id="b1" class="square light"><div class="piece white">m</div></div>
-    <div id="c1" class="square dark"><div class="piece white">v</div></div>
-    <div id="d1" class="square light"><div class="piece white">w</div></div>
-    <div id="e1" class="square dark"><div class="piece white">l</div></div>
-    <div id="f1" class="square light"><div class="piece white">v</div></div>
-    <div id="g1" class="square dark"><div class="piece white">m</div></div>
-    <div id="h1" class="square light"><div class="piece white">t</div></div>
-    `
+    // <div id="a1" class="square dark"><div class="piece white">t</div></div>
+    // <div id="b1" class="square light"><div class="piece white">m</div></div>
+    // <div id="c1" class="square dark"><div class="piece white">v</div></div>
+    // <div id="d1" class="square light"><div class="piece white">w</div></div>
+    // <div id="e1" class="square dark"><div class="piece white">l</div></div>
+    // <div id="f1" class="square light"><div class="piece white">v</div></div>
+    // <div id="g1" class="square dark"><div class="piece white">m</div></div>
+    // <div id="h1" class="square light"><div class="piece white">t</div></div>
+    // `
 
-    var click = 1
-    var spots = ['', '']
+    // var click = 1
+    // var spots = ['', '']
 }
 
 

@@ -11,20 +11,24 @@
 body {
     /* background-color: antiquewhite; */
     background-color: #918f89;
+    /* width: 100%;
+    height: 100%; */
 }
 
 input {
-    margin-left: 50px;
-    margin-top: 50px;
+    /* margin-left: 50px;
+    margin-top: 50px; */
 }
 
 .board {
-    width: 600px;
-    height: 600px;
+    /* width: 600px;
+    height: 600px; */
+    width: 85vmin;
+    height: 85vmin;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    margin-left: 50px;
-    margin-top: 50px;
+    /* margin-left: 50px;
+    margin-top: 50px; */
     border: 2px solid black;
     transform-origin: center;
 }
@@ -33,8 +37,8 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 75px;
-    max-height: 75px;
+    /* max-width: 75px;
+    max-height: 75px; */
 }
 
 .dark {
@@ -69,18 +73,85 @@ input {
 .piece {
     position: absolute;
     font-family: Chess;
-    font-size: 60px;
+    font-size: 72px;
     transform-origin: center;
+}
+
+
+
+@media (max-width: 700px) {
+    .piece {
+        font-size: 55px;
+    }
+}
+
+@media (max-width: 510px) {
+    .piece {
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 410px) {
+    .piece {
+        font-size: 33px;
+    }
+}
+
+@media (max-width: 300px) {
+    .piece {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 240px) {
+    .piece {
+        font-size: 20px;
+    }
 }
 
 /* .dark .piece {
     color: white;
 } */
 
+.bottom {
+    display: flex;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 85vmin;
+    font-family: sans-serif;
+    font-size: 3vmin;
+}
+
 .messageBox {
-    width: 171px;
-    height: 18px;
+    width: 63.8vmin;
+    height: 5vmin;
     background-color: white;
-    border: 1px solid #777;
-    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    /* margin-left: 50px; */
+    border-right: 2px solid black;
+}
+
+#flip {
+    width: 10.6vmin;
+    background-color: #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid black;
+}
+
+#resetBtn {
+    width: 10.6vmin;
+    background-color: #dddddd;
+    border: none;
+    font-size: 3vmin;
+}
+
+#resetBtn:hover, #flip:hover {
+    opacity: 0.7;
+    cursor: pointer;
 }
