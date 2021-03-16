@@ -22,7 +22,6 @@ function checkForStalemates(cur, next) {
     let i = 1, j = 1;
     while (i <= 8) {
         while (j <= 8) {
-            console.log(i, j);
 
             if (document.getElementById(numberAsLetter(i) + String(j)).innerHTML.search(color) > 0)
             {
@@ -129,10 +128,196 @@ function checkForStalemates(cur, next) {
 
                 if (document.getElementById(numberAsLetter(placeX) + String(placeY)).innerText == (knight)) {
 
+                    // up right
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX + 1) + String(placeY + 2), 1)
+                        ) {return 0}
+                    } catch (e) {}
+                    // up left
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX - 1) + String(placeY + 2), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // right up
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX + 2) + String(placeY + 1), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // left up
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX - 2) + String(placeY + 1), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // right down
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX + 2) + String(placeY - 1), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // left down
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX - 2) + String(placeY - 1), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // down right
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX + 1) + String(placeY - 2), 1)
+                            ) {return 0}
+                    } catch (e) {}
+                    // down left
+                    try {
+                        if (
+                        move(
+                            numberAsLetter(placeX) + String(placeY), 
+                            numberAsLetter(placeX - 1) + String(placeY - 2), 1)
+                            ) {return 0}
+                    } catch (e) {}
+
+                }
+
+                if (document.getElementById(numberAsLetter(placeX) + String(placeY)).innerText == (bishop || queen)) {
+
                     for (k = 1; k <= 8; k++) {
+
+                        // up right
+                        try {
+                            if (
+                                move(
+                                    numberAsLetter(placeX) + String(placeY), 
+                                    numberAsLetter(placeX + k) + String(placeY + k), 1)
+                                ) {return 0}
+                        } catch (e) {}
+                        // up left
+                        try {
+                            if (
+                                move(
+                                    numberAsLetter(placeX) + String(placeY), 
+                                    numberAsLetter(placeX - k) + String(placeY + k), 1)
+                                ) {return 0}
+                        } catch (e) {}
+                        // down right
+                        try {
+                            if (
+                                move(
+                                    numberAsLetter(placeX) + String(placeY), 
+                                    numberAsLetter(placeX + k) + String(placeY - k), 1)
+                                ) {return 0}
+                        } catch (e) {}
+                        // down left
+                        try {
+                            if (
+                                move(
+                                    numberAsLetter(placeX) + String(placeY), 
+                                    numberAsLetter(placeX - k) + String(placeY - k), 1)
+                                ) {return 0}
+                        } catch (e) {}
 
                     }
 
+                }
+
+                if (document.getElementById(numberAsLetter(placeX) + String(placeY)).innerText == (king)) {
+                    // clockwise + castle
+                    // up right
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX + 1) + String(placeY + 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // right
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX + 1) + String(placeY), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // down right
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX + 1) + String(placeY - 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // down
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX) + String(placeY - 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // down left
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX - 1) + String(placeY - 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // left
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX - 1) + String(placeY), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // left up
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX - 1) + String(placeY + 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // up
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX) + String(placeY + 1), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // castle right
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX + 2) + String(placeY), 1)
+                            ) {return 0} 
+                    } catch (e) {}
+                    // castle left
+                    try {
+                        if (
+                            move(
+                                numberAsLetter(placeX) + String(placeY), 
+                                numberAsLetter(placeX - 2) + String(placeY), 1)
+                            ) {return 0} 
+                    } catch (e) {}
                 }
                 
             }
