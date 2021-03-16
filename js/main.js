@@ -58,6 +58,7 @@ function move(cur, next, test){
         } else {
             checkForStalemates(cur, next);
         }
+        alertError = 1
         if (turn % 2 == 0) {
             flip = 0;
             boardFlip();

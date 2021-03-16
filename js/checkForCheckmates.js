@@ -179,6 +179,7 @@ function checkForCheckmates(cur, next, tempX, tempY){
         } 
     }
 
+    // captures
     // vert and hort
     if (testVertAndHort(nextLetterAsNumber, nextNumber, opoColor)) {
         turn -= 1
@@ -243,6 +244,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
                                 return 0;
                             }
 
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
                         }
                     }
                 } 
@@ -268,6 +276,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
 
                             // knights
                             if (testKnights(nextLetterAsNumber, i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+                            
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber, i, color)) {
                                 turn -= 1
                                 alertError = 1
                                 return 0;
@@ -384,6 +399,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
                                 return 0;
                             }
 
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber + i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
                         }
                     }
                 }
@@ -416,6 +438,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
 
                             // knights
                             if (testKnights(nextLetterAsNumber - i, nextNumber + i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber - i, nextNumber + i, color)) {
                                 turn -= 1
                                 alertError = 1
                                 return 0;
@@ -459,6 +488,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
                                 return 0;
                             }
 
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber + i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
                         }
                     }
 
@@ -491,6 +527,13 @@ function checkForCheckmates(cur, next, tempX, tempY){
 
                             // knights
                             if (testKnights(nextLetterAsNumber - i, nextNumber - i, color)) {
+                                turn -= 1
+                                alertError = 1
+                                return 0;
+                            }
+
+                            // pawns
+                            if (testBlockWithPawn(nextLetterAsNumber - i, nextNumber - i, color)) {
                                 turn -= 1
                                 alertError = 1
                                 return 0;
