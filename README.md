@@ -1,3 +1,4 @@
 ### Embedded Chess
-    by cybervate
-    [github](https://github.com/Cybervate/embedded_chess)
+
+by cybervate
+[github](https://github.com/Cybervate/embedded_chess)
