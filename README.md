@@ -1,4 +1,4 @@
-### Embedded Chess
+# Embedded Chess
 
 by cybervate
 
