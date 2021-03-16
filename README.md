@@ -8,7 +8,7 @@ by cybervate
 
 Add this to your HTML document
 
-```
+```HTML
 <iframe src="https://chess.mmbultra.com"
 title="Chess" 
 width="600px" 
@@ -19,4 +19,4 @@ border: 2px solid black;
 >Chess Unavailable</iframe>
 ```
 
-You can edit this width & height, but make sure they are the same
+You can edit the width & height, but make sure they are the same
